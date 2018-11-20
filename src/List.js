@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { base } from './base';
 import './List.css';
 
 import Company from './Company';
@@ -72,16 +71,16 @@ class List extends Component {
         <div className="container-fluid">
           <div className="row justify-content-md-center">
               <div className="thumbnail">
-                <img className="filter-button" src={"./img/buttons/eat.png"} onClick={() => this.handleClick("Eat")} />
+                <img key="eat" alt="eat" className="filter-button" src={"./img/buttons/eat.png"} onClick={() => this.handleClick("Eat")} />
               </div>
               <div className="thumbnail">
-                <img className="filter-button" src={"./img/buttons/play.png"} onClick={() => this.handleClick("Play")} />
+                <img key="play" alt="play" className="filter-button" src={"./img/buttons/play.png"} onClick={() => this.handleClick("Play")} />
               </div>
               <div className="thumbnail">
-                <img className="filter-button" src={"./img/buttons/services.png"} onClick={() => this.handleClick("Services")} />
+                <img key="services" alt="services" className="filter-button" src={"./img/buttons/services.png"} onClick={() => this.handleClick("Services")} />
               </div>
               <div className="thumbnail">
-                <img className="filter-button" src={"./img/buttons/shop.png"} onClick={() => this.handleClick("Shop")} />
+                <img key="shop" alt="shop" className="filter-button" src={"./img/buttons/shop.png"} onClick={() => this.handleClick("Shop")} />
               </div>
           </div>
           <CompanySearch value={this.state.searchValue} onChange={this.handleSearchChange} clearSearch={this.clearSearch}/>

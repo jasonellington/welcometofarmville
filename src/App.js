@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import './App.css';
 
 import Home from './Home';
@@ -9,7 +9,7 @@ import companyData from './companyData';
 
 const Header = (props) => (
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <NavLink className="navbar-brand" to="/" exact activeClassName="active">
         <img
           className="navbar-logo"
@@ -17,12 +17,12 @@ const Header = (props) => (
           alt="Home"
         />
       </NavLink>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav ml-auto">
           <li className="nav-item m-2">
             <NavLink className="nav-link" to="/" exact activeClassName="active">Home</NavLink>
           </li>
