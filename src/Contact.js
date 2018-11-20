@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactContactForm from 'react-mail-form';
-import './App.css';
 import './Contact.css';
 
 class Contact extends Component {
