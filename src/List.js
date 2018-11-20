@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import fire from './base';
 
 import Company from './Company';
@@ -9,7 +10,8 @@ class List extends Component {
     companies: [],
     companysToDisplay: [],
     filter: '',
-    searchValue: ''
+    searchValue: '',
+    load: false
   }
 
   componentDidMount() {
@@ -22,8 +24,9 @@ class List extends Component {
         company.key = key;
         companies.push(company);
       }
-      this.setState({companies, companysToDisplay: companies});
+      this.setState({companies, companysToDisplay: companies, load: true});
     });
+
   }
 
   handleSearchChange = (event) => {
@@ -35,7 +38,6 @@ class List extends Component {
       const searchedCompanyList = this.state.companies.filter(company =>
         company.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
       );
-      //i need to add a filter for each category here?
 
       return {
         companysToDisplay: searchedCompanyList,
@@ -69,12 +71,21 @@ class List extends Component {
 
   render() {
 
-    let companyMapper = this.state.companysToDisplay.map((company, index) => {
-      company.id = index;
-      return (
-        <Company company={company} key={index} />
-      )
-    });
+    let companysToDisplay = this.state.companysToDisplay;
+    let companyMapper;
+
+    if(companysToDisplay.length != 0) {
+      companyMapper = companysToDisplay.map((company, index) => {
+        company.id = index;
+        return (
+          <Company company={company} key={index} />
+        )
+      });
+    } else if(!this.state.load) {
+      companyMapper = <LoadingCompanies />
+    } else {
+      companyMapper = <NoCompanies />
+    }
 
     return (
       <main>
@@ -99,7 +110,7 @@ class List extends Component {
           <CompanySearch value={this.state.searchValue} onChange={this.handleSearchChange} clearSearch={this.clearSearch}/>
         </div>
         <div className="container-fluid py-5 bg-light">
-          <div className="row">
+          <div className="row justify-content-md-center">
             {companyMapper}
           </div>
         </div>
@@ -123,14 +134,33 @@ const CompanySearch = (props) => (
             autoComplete="off"
           />
         </div>
-        {/*<div className="clearSearch">
-          <button className="btn btn-lg btn-first m-1" onClick={props.clearSearch}>
-            <i className="fa fa-times"></i>
-          </button>
-        </div>*/}
+        {props.value ? <ClearSearchButton clearSearch={props.clearSearch} /> : null}
       </div>
     </div>
 	</div>
 );
+
+const LoadingCompanies = () => (
+  <div className="text-center">
+    <h2>Loading Companies...</h2>
+  </div>
+)
+
+const NoCompanies = () => (
+  <div className="text-center">
+    <h2>Oh No!</h2>
+    <p>Sorry, the company you're looking for isn't a part of The Welcome Book!</p>
+    <p>Click below and tell us who you want us to add!</p>
+    <Link className="btn btn-lg btn-first" to="/contact">Contact Us</Link>
+  </div>
+)
+
+const ClearSearchButton = (props) => (
+  <div className="clearSearch">
+    <button className="btn btn-lg btn-first m-1" onClick={props.clearSearch}>
+      <i className="fa fa-times"></i>
+    </button>
+  </div>
+)
 
 export default List;
