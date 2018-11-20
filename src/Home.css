@@ -1,8 +1,5 @@
-/*
- * Globals
- */
 
-/* Jumbotron */
+/* site-wrapper */
 .site-wrapper {
   background-image: url("/welcome.png");
   background-size: cover;

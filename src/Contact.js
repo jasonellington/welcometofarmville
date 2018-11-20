@@ -5,10 +5,8 @@ import './App.css';
 class Contact extends Component {
   render() {
     return (
-      <div>
-        <div class="jumbotron">
-          <h1>Contact Us.</h1>
-        </div>
+      <div class="jumbotron">
+        <h1>Contact Us.</h1>
       </div>
     );
   }

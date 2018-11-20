@@ -86,11 +86,9 @@ class List extends Component {
           </div>
           <CompanySearch value={this.state.searchValue} onChange={this.handleSearchChange} clearSearch={this.clearSearch}/>
         </div>
-        <div className="album py-5 bg-light">
-          <div className="container">
-            <div className="row">
-              {companyMapper}
-            </div>
+        <div className="container-fluid py-5 bg-light">
+          <div className="row">
+            {companyMapper}
           </div>
         </div>
       </main>
