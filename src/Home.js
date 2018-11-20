@@ -9,7 +9,7 @@ class Home extends Component {
           <div className="container">
             <div className="inner cover">
               <h1 className="cover-heading"><span>Discover Farmville!</span></h1>
-              <p className="lead-text"><span>Weclome. That's how we want you to feel.</span></p>
+              <p className="lead-text"><span>Welcome. That's how we want you to feel.</span></p>
               <p className="lead">
                 <Link className="btn btn-lg btn-first" to="/explore">Explore</Link>
               </p>

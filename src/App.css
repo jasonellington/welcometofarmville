@@ -142,6 +142,10 @@ h2 {
   display: block;
 }
 
+.filter-button-gray {
+  filter: grayscale(100%);
+}
+
 /*badge icons */
 .badge-eat {
   background-color: #005fad;

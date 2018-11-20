@@ -48,18 +48,25 @@ class List extends Component {
 
   handleClick = (filter) => {
 
+    if (this.state.filter === filter) {
+      this.setState({
+        companysToDisplay: this.state.companies,
+        filter: ''
+      });
+    } else {
+      this.setState((prevState, props) => {
 
-    this.setState((prevState, props) => {
+        const filteredCompanyList = this.state.companies.filter(company =>
+          company.badge === filter
+        );
 
-      const filteredCompanyList = this.state.companies.filter(company =>
-        company.badge === filter
-      );
-
-      return {
-        companysToDisplay: filteredCompanyList,
-        searchValue: ''
-      }
-    });
+        return {
+          companysToDisplay: filteredCompanyList,
+          filter,
+          searchValue: ''
+        }
+      });
+    }
   }
 
   clearSearch = () => {
@@ -95,16 +102,16 @@ class List extends Component {
         <div className="container-fluid">
           <div className="row justify-content-md-center">
               <div className="thumbnail">
-                <img key="eat" alt="eat" className="filter-button" src={"./img/buttons/eat.png"} onClick={() => this.handleClick("Eat")} />
+                <img key="eat" alt="eat" className={this._getclassNames("Eat")} src={"./img/buttons/eat.png"} onClick={() => this.handleClick("Eat")} />
               </div>
               <div className="thumbnail">
-                <img key="play" alt="play" className="filter-button" src={"./img/buttons/play.png"} onClick={() => this.handleClick("Play")} />
+                <img key="play" alt="play" className={this._getclassNames("Play")} src={"./img/buttons/play.png"} onClick={() => this.handleClick("Play")} />
               </div>
               <div className="thumbnail">
-                <img key="services" alt="services" className="filter-button" src={"./img/buttons/services.png"} onClick={() => this.handleClick("Services")} />
+                <img key="services" alt="services" className={this._getclassNames("Services")} src={"./img/buttons/services.png"} onClick={() => this.handleClick("Services")} />
               </div>
               <div className="thumbnail">
-                <img key="shop" alt="shop" className="filter-button" src={"./img/buttons/shop.png"} onClick={() => this.handleClick("Shop")} />
+                <img key="shop" alt="shop" className={this._getclassNames("Shop")} src={"./img/buttons/shop.png"} onClick={() => this.handleClick("Shop")} />
               </div>
           </div>
           <CompanySearch value={this.state.searchValue} onChange={this.handleSearchChange} clearSearch={this.clearSearch}/>
@@ -116,6 +123,19 @@ class List extends Component {
         </div>
       </main>
     );
+  }
+
+  /* grab badge color */
+  _getclassNames(current) {
+    let filter = this.state.filter;
+    let className = 'filter-button';
+
+    if(filter != '') {
+      if (filter != current) {
+        className += ' filter-button-gray';
+      }
+    }
+    return className;
   }
 }
 
