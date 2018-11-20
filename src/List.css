@@ -1,0 +1,6 @@
+.filter-button {
+  cursor: pointer;
+  height: 125px;
+  width: 125px;
+  display: block;
+}

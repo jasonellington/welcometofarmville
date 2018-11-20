@@ -1,0 +1,72 @@
+/* general */
+html, body  {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-family: "Permanent Marker";
+}
+
+/* navbar */
+.navbar-logo {
+  height: auto;
+  width: 225px;
+}
+
+.nav-link {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link.active {
+  font-family: 'Montserrat', sans-serif;
+  color: #03a550 !important;
+}
+
+/* jumbotron */
+.jumbotron {
+  background-image: url("/jumbotron.png");
+  background-size: cover;
+}
+
+.jumbotron h1 {
+  color: #fff;
+  font-size: 44px;
+  font-family: 'Permanent Marker';
+  text-shadow: 3px 3px 0px rgba(0,0,0, 0.7);
+}
+
+/* Custom default button */
+.btn-first,
+.btn-first:focus {
+  color: #fff;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  background-color: #03a550;
+  border: 1px solid #03a550;
+}
+
+.btn-first:hover {
+  color: #03a550;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  background-color: #fff;
+  border: 1px solid #03a550;
+}
+
+.btn-second,
+.btn-second:focus {
+  color: #03a550;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  background-color: #fff;
+  border: 1px solid #03a550;
+}
+
+.btn-second:hover {
+  color: #fff;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  background-color: #03a550;
+  border: 1px solid #03a550;
+}
