@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Contact.css';
 
 class Contact extends Component {
   render() {
@@ -53,15 +52,15 @@ class Contact extends Component {
             <div className="col-md-3 text-center">
               <ul className="list-unstyled mb-0">
                 <li>
-                  <i className="fa fa-map-marker fa-2x"></i>
+                  <i className="fa fa-map-marker fa-2x icon-green"></i>
                   <p>Farmville, VA 23901, USA</p>
                 </li>
                 <li>
-                  <i className="fa fa-phone mt-4 fa-2x"></i>
+                  <i className="fa fa-phone mt-4 fa-2x icon-green"></i>
                   <p>434.392.1633</p>
                 </li>
                 <li>
-                  <i className="fa fa-envelope mt-4 fa-2x"></i>
+                  <i className="fa fa-envelope mt-4 fa-2x icon-green"></i>
                   <p>jedesign@embarqmail.com</p>
                 </li>
               </ul>

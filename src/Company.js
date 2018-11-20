@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
-import './Company.css';
 
 class Company extends Component {
   render() {
     let company = this.props.company;
-    console.log(company.key);
 
     return (
-      <div className="col-md-4" id={this.props.key}>
+      <div className="col-md-4" id={company.id}>
         <div className="card mb-4">
           <img
             className="card-img-top company-image"
@@ -20,19 +18,19 @@ class Company extends Component {
             <p className="card-deal">{company.deal}</p>
             <div className="d-flex justify-content-between align-items-center">
               <div className="btn-group">
-                <button type="button" className="btn btn-small btn-second" data-toggle="modal" data-target={`#details-${company.key}`} id={`#details-${company.key}`}>View</button>
+                <button type="button" className="btn btn-small btn-second" data-toggle="modal" data-target={`#details-${company.id}`} id={`#details-${company.id}`}>View</button>
               </div>
               <span className={this._getclassNames(company.badge)}>{company.badge}</span>
             </div>
           </div>
         </div>
-        <div className="modal fade bd-example-modal-lg" id={`details-${company.key}`} tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div className="modal fade bd-example-modal-lg" id={`details-${company.id}`} tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
           <div className="modal-dialog modal-lg">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">{company.name}</h5>
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <i className="icon fas fa-times"></i>
+                  <i className="fas fa-times icon-green"></i>
                 </button>
               </div>
               <div className="modal-body">

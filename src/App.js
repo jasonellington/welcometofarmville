@@ -5,7 +5,6 @@ import './App.css';
 import Home from './Home';
 import List from './List';
 import Contact from './Contact';
-import companyData from './companyData';
 
 const Header = (props) => (
   <div>
@@ -46,10 +45,7 @@ class App extends Component {
           <Header />
           <div className="container-fluid">
             <Route exact path="/" component={Home} />
-            <Route
-              path="/explore"
-              render={(props) => <List {...props} companyData={companyData} />}
-            />
+            <Route path="/explore" component={List} />
             <Route path="/contact" component={Contact} />
           </div>
         </div>

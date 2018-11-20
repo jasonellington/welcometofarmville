@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
-import './List.css';
+import fire from './base';
 
 import Company from './Company';
 
 class List extends Component {
   state = {
+    table: fire.database().ref('companies'),
+    companies: [],
     companysToDisplay: [],
     filter: '',
     searchValue: ''
   }
 
   componentDidMount() {
-    this.setState({
-      companysToDisplay: this.props.companyData
+    //using firebase to request a response from our table
+    this.state.table.on('value', (response) => {
+      let objects = response.val();
+      let companies = [];
+      for(let key in objects) {
+        let company = objects[key];
+        company.key = key;
+        companies.push(company);
+      }
+      this.setState({companies, companysToDisplay: companies});
     });
   }
 
@@ -22,7 +32,7 @@ class List extends Component {
 
     this.setState((prevState, props) => {
 
-      const searchedCompanyList = this.props.companyData.filter(company =>
+      const searchedCompanyList = this.state.companies.filter(company =>
         company.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
       );
       //i need to add a filter for each category here?
@@ -39,7 +49,7 @@ class List extends Component {
 
     this.setState((prevState, props) => {
 
-      const filteredCompanyList = props.companyData.filter(company =>
+      const filteredCompanyList = this.state.companies.filter(company =>
         company.badge === filter
       );
 
@@ -52,16 +62,19 @@ class List extends Component {
 
   clearSearch = () => {
     this.setState({
-      companysToDisplay: this.props.companyData,
+      companysToDisplay: this.state.companies,
       searchValue: ''
     });
   }
 
   render() {
 
-    let companyMapper = this.state.companysToDisplay.map((company, index) =>
-      <Company company={company} key={index} />
-    );
+    let companyMapper = this.state.companysToDisplay.map((company, index) => {
+      company.id = index;
+      return (
+        <Company company={company} key={index} />
+      )
+    });
 
     return (
       <main>
@@ -110,11 +123,11 @@ const CompanySearch = (props) => (
             autoComplete="off"
           />
         </div>
-        <div className="clearSearch">
+        {/*<div className="clearSearch">
           <button className="btn btn-lg btn-first m-1" onClick={props.clearSearch}>
             <i className="fa fa-times"></i>
           </button>
-        </div>
+        </div>*/}
       </div>
     </div>
 	</div>
