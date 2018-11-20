@@ -4,7 +4,7 @@ import './Company.css';
 class Company extends Component {
   render() {
     let company = this.props.company;
-    console.log(this.props.key);
+    console.log(company.key);
 
     return (
       <div className="col-md-4" id={this.props.key}>
@@ -20,13 +20,13 @@ class Company extends Component {
             <p className="card-deal">{company.deal}</p>
             <div className="d-flex justify-content-between align-items-center">
               <div className="btn-group">
-                <button type="button" className="btn btn-small btn-second" data-toggle="modal" data-target={`#details${this.props.key}`} id={`#details${this.props.key}`}>View</button>
+                <button type="button" className="btn btn-small btn-second" data-toggle="modal" data-target={`#details-${company.key}`} id={`#details-${company.key}`}>View</button>
               </div>
               <span className={this._getclassNames(company.badge)}>{company.badge}</span>
             </div>
           </div>
         </div>
-        <div className="modal fade bd-example-modal-lg" id={`details${this.props.key}`} tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div className="modal fade bd-example-modal-lg" id={`details-${company.key}`} tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
           <div className="modal-dialog modal-lg">
             <div className="modal-content">
               <div className="modal-header">

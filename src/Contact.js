@@ -4,7 +4,7 @@ import './Contact.css';
 class Contact extends Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div>
         <div className="jumbotron">
           <h1>Contact Us.</h1>
         </div>
